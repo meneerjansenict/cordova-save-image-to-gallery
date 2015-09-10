@@ -1,4 +1,4 @@
-package org.devgeeks.Canvas2ImagePlugin;
+package org.solderzzc.Base64ImageSaverPlugin;
 
 import java.io.File;
 import java.io.FileOutputStream;
