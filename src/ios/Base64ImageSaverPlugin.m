@@ -1,21 +1,21 @@
 //
-//  Canvas2ImagePlugin.m
-//  Canvas2ImagePlugin PhoneGap/Cordova plugin
+//  Base64ImageSaverPlugin.m
+//  Base64ImageSaverPlugin PhoneGap/Cordova plugin
 //
 //  Created by Tommy-Carlos Williams on 29/03/12.
 //  Copyright (c) 2012 Tommy-Carlos Williams. All rights reserved.
 //	MIT Licensed
 //
 
-#import "Canvas2ImagePlugin.h"
+#import "Base64ImageSaverPlugin.h"
 #import <Cordova/CDV.h>
 
-@implementation Canvas2ImagePlugin
+@implementation Base64ImageSaverPlugin
 @synthesize callbackId;
 
 //-(CDVPlugin*) initWithWebView:(UIWebView*)theWebView
 //{
-//    self = (Canvas2ImagePlugin*)[super initWithWebView:theWebView];
+//    self = (Base64ImageSaverPlugin*)[super initWithWebView:theWebView];
 //    return self;
 //}
 
