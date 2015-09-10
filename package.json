@@ -3,7 +3,7 @@
   "version": "0.6.0",
   "description": "This plugin allows you to save the contents of an HTML canvas tag to the iOS Photo Library, or Android Gallery from your app.",
   "cordova": {
-    "id": "org.devgeeks.Canvas2ImagePlugin",
+    "id": "org.solderzzc.Base64ImageSaverPlugin",
     "platforms": [
       "ios",
       "android",
@@ -12,7 +12,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/devgeeks/Canvas2ImagePlugin.git"
+    "url": "git+https://github.com/solderzzc/Base64ImageSaverPlugin.git"
   },
   "keywords": [
     "canvas",
@@ -30,13 +30,13 @@
     }
   ],
   "author": {
-    "name": "tommy-carlos williams",
-    "email": "tommy@devgeeks.org",
-    "url": "http://devgeeks.org"
+    "name": "Simba Zhang",
+    "email": "solderzzc@gmail.com",
+    "url": "http://www.tiegushi.com"
   },
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/devgeeks/Canvas2ImagePlugin/issues"
+    "url": "https://github.com/solderzzc/Base64ImageSaverPlugin/issues"
   },
-  "homepage": "https://github.com/devgeeks/Canvas2ImagePlugin#readme"
+  "homepage": "https://github.com/solderzzc/Base64ImageSaverPlugin#readme"
 }
