@@ -6,9 +6,9 @@ using WPCordovaClassLib.Cordova;
 using WPCordovaClassLib.Cordova.Commands;
 using WPCordovaClassLib.Cordova.JSON;
 
-public class Canvas2ImagePlugin : BaseCommand
+public class Base64ImageSaverPlugin : BaseCommand
 {
-    public Canvas2ImagePlugin()
+    public Base64ImageSaverPlugin()
 	{
 	}
 
