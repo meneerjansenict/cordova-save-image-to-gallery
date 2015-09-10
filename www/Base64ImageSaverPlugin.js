@@ -1,5 +1,5 @@
 //
-//  Canvas2ImagePlugin.js
+//  Base64ImageSaverPlugin.js
 //  Base64ImageSaverPlugin PhoneGap/Cordova plugin
 //
 //  Created by Tommy-Carlos Williams on 29/03/12.
@@ -23,7 +23,7 @@
         }
         else {
             var imageData = base64Data.replace(/data:image\/png;base64,/,'');
-            return cordova.exec(successCallback, failureCallback, "Canvas2ImagePlugin","saveImageDataToLibrary",[imageData]);
+            return cordova.exec(successCallback, failureCallback, "Base64ImageSaverPlugin","saveImageDataToLibrary",[imageData]);
         }
     }
   };
