@@ -1,6 +1,6 @@
 //
-//  Canvas2ImagePlugin.h
-//  Canvas2ImagePlugin PhoneGap/Cordova plugin
+//  Base64ImageSaverPlugin.h
+//  Base64ImageSaverPlugin PhoneGap/Cordova plugin
 //
 //  Created by Tommy-Carlos Williams on 29/03/12.
 //  Copyright (c) 2012 Tommy-Carlos Williams. All rights reserved.
@@ -10,7 +10,7 @@
 
 #import <Cordova/CDVPlugin.h>
 
-@interface Canvas2ImagePlugin : CDVPlugin
+@interface Base64ImageSaverPlugin : CDVPlugin
 {
 	NSString* callbackId;
 }
