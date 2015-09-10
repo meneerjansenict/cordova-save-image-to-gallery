@@ -1,9 +1,9 @@
 {
-  "name": "org.solderzzc.Base64ImageSaverPlugin",
+  "name": "Base64ImageSaverPlugin",
   "version": "0.6.0",
   "description": "This plugin allows you to save the contents of an HTML canvas tag to the iOS Photo Library, or Android Gallery from your app.",
   "cordova": {
-    "id": "org.solderzzc.Base64ImageSaverPlugin",
+    "id": "org.solderzzc.base64imagesaverplugin",
     "platforms": [
       "ios",
       "android",
