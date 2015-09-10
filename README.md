@@ -1,19 +1,7 @@
-Canvas2ImagePlugin
+Base64ImageSaverPlugin
 ============
 
-This plugin allows you to save the contents of an HTML canvas tag to the iOS Photo Library, Android Gallery or WindowsPhone 8 Photo Album from your app.
-
-See an example project using it here: [https://github.com/devgeeks/Canvas2ImageDemo](https://github.com/devgeeks/Canvas2ImageDemo) - note: this app does not work in wp8.
-
-Installation
-------------
-
-### For Cordova 3.0.x:
-
-1. To add this plugin just type: `cordova plugin add https://github.com/devgeeks/Canvas2ImagePlugin.git` or `phonegap local plugin add https://github.com/devgeeks/Canvas2ImagePlugin.git`
-2. To remove this plugin type: `cordova plugin remove org.devgeeks.Canvas2ImagePlugin` or `phonegap local plugin remove org.devgeeks.Canvas2ImagePlugin`
-
-### NOTE: For older versions of Cordova (You will probably have to use tag 0.2.0)
+This plugin(based on devgeeks/Canvas2ImagePlugin) allows you to save BASE64 data to the iOS Photo Library, Android Gallery or WindowsPhone 8 Photo Album from your app.
 
 Usage:
 ------
@@ -21,9 +9,6 @@ Usage:
 Call the `window.canvas2ImagePlugin.saveImageDataToLibrary()` method using success and error callbacks and the id attribute or the element object of the canvas to save:
 
 ### Example
-```html
-<canvas id="myCanvas" width="165px" height="145px"></canvas>
-```
 
 ```javascript
 function onDeviceReady()
@@ -35,7 +20,7 @@ function onDeviceReady()
         function(err){
             console.log(err);
         },
-        document.getElementById('myCanvas')
+        BASE64DATA
     );
 }
 ```
