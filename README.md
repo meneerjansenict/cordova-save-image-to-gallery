@@ -6,14 +6,14 @@ This plugin(based on devgeeks/Canvas2ImagePlugin) allows you to save BASE64 data
 Usage:
 ------
 
-Call the `window.canvas2ImagePlugin.saveImageDataToLibrary()` method using success and error callbacks and the id attribute or the element object of the canvas to save:
+Call the `window.Base64ImageSaverPlugin.saveImageDataToLibrary()` method using success and error callbacks and the id attribute or the element object of the canvas to save:
 
 ### Example
 
 ```javascript
 function onDeviceReady()
 {
-	window.canvas2ImagePlugin.saveImageDataToLibrary(
+	window.Base64ImageSaverPlugin.saveImageDataToLibrary(
         function(msg){
             console.log(msg);
         },
