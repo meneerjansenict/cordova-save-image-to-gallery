@@ -1,6 +1,6 @@
 <plugin xmlns="http://www.phonegap.com/ns/plugins/1.0"
     xmlns:android="http://schemas.android.com/apk/res/android"
-    id="org.solderzzc.base64imagesaver"
+    id="org.solderzzc.Base64ImageSaverPlugin"
     version="0.6.0">
 
     <name>Base64ImageSaverPlugin</name>
@@ -12,7 +12,7 @@
     <description>This plugin allows you to save Base64 Data to the iOS Photo Library, or Android Gallery from your app.</description>
     <author>Tommy-Carlos Williams - tommy@devgeeks.org</author>
     <author>Simba Zhang - solderzzc@gmail.com</author>
-    <keywords>canvas,image,photo library</keywords>
+    <keywords>base64,png,save,canvas,image,photo library</keywords>
 
     <license>MIT</license>
 
