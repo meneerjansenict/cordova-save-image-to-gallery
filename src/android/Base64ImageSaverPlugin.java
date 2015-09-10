@@ -20,15 +20,15 @@ import android.util.Base64;
 import android.util.Log;
 
 /**
- * Canvas2ImagePlugin.java
+ * Base64ImageSaverPlugin.java
  *
- * Android implementation of the Canvas2ImagePlugin for iOS.
+ * Android implementation of the Base64ImageSaverPlugin for iOS.
  * Inspirated by Joseph's "Save HTML5 Canvas Image to Gallery" plugin
  * http://jbkflex.wordpress.com/2013/06/19/save-html5-canvas-image-to-gallery-phonegap-android-plugin/
  *
  * @author Vegard Løkken <vegard@headspin.no>
  */
-public class Canvas2ImagePlugin extends CordovaPlugin {
+public class Base64ImageSaverPlugin extends CordovaPlugin {
 	public static final String ACTION = "saveImageDataToLibrary";
 
 	@Override
@@ -79,7 +79,7 @@ public class Canvas2ImagePlugin extends CordovaPlugin {
 					+ c.get(Calendar.SECOND);
 
 			String deviceVersion = Build.VERSION.RELEASE;
-			Log.i("Canvas2ImagePlugin", "Android version " + deviceVersion);
+			Log.i("Base64ImageSaverPlugin", "Android version " + deviceVersion);
 			int check = deviceVersion.compareTo("2.3.3");
 
 			File folder;
@@ -108,7 +108,7 @@ public class Canvas2ImagePlugin extends CordovaPlugin {
 
 			retVal = imageFile;
 		} catch (Exception e) {
-			Log.e("Canvas2ImagePlugin", "An exception occured while saving image: "
+			Log.e("Base64ImageSaverPlugin", "An exception occured while saving image: "
 					+ e.toString());
 		}
 		return retVal;
