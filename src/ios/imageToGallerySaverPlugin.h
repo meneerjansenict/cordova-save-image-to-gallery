@@ -10,7 +10,7 @@
 
 #import <Cordova/CDVPlugin.h>
 
-@interface Base64ImageSaverPlugin : CDVPlugin
+@interface imageToGallerySaverPlugin : CDVPlugin
 {
 	NSString* callbackId;
 }

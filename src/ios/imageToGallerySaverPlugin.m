@@ -7,10 +7,10 @@
 //	MIT Licensed
 //
 
-#import "Base64ImageSaverPlugin.h"
+#import "imageToGallerySaverPlugin.h"
 #import <Cordova/CDV.h>
 
-@implementation Base64ImageSaverPlugin
+@implementation imageToGallerySaverPlugin
 @synthesize callbackId;
 
 //-(CDVPlugin*) initWithWebView:(UIWebView*)theWebView
@@ -23,10 +23,10 @@
 {
     self.callbackId = command.callbackId;
 	NSData* imageData = [NSData dataFromBase64String:[command.arguments objectAtIndex:0]];
-	
-	UIImage* image = [[[UIImage alloc] initWithData:imageData] autorelease];	
+
+	UIImage* image = [[[UIImage alloc] initWithData:imageData] autorelease];
 	UIImageWriteToSavedPhotosAlbum(image, self, @selector(image:didFinishSavingWithError:contextInfo:), nil);
-	
+
 }
 
 - (void)image:(UIImage *)image didFinishSavingWithError:(NSError *)error contextInfo:(void *)contextInfo
@@ -49,7 +49,7 @@
 }
 
 - (void)dealloc
-{	
+{
 	[callbackId release];
     [super dealloc];
 }

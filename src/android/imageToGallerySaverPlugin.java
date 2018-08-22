@@ -28,7 +28,7 @@ import android.util.Log;
  *
  * @author Vegard Løkken <vegard@headspin.no>
  */
-public class Base64ImageSaverPlugin extends CordovaPlugin {
+public class imageToGallerySaverPlugin extends CordovaPlugin {
 	public static final String ACTION = "saveImageDataToLibrary";
 
 	@Override
@@ -40,7 +40,7 @@ public class Base64ImageSaverPlugin extends CordovaPlugin {
 			String base64 = data.optString(0);
 			if (base64.equals("")) // isEmpty() requires API level 9
 				callbackContext.error("Missing base64 string");
-			
+
 			// Create the bitmap from the base64 string
 			Log.d("Canvas2ImagePlugin", base64);
 			byte[] decodedString = Base64.decode(base64, Base64.DEFAULT);
@@ -48,18 +48,18 @@ public class Base64ImageSaverPlugin extends CordovaPlugin {
 			if (bmp == null) {
 				callbackContext.error("The image could not be decoded");
 			} else {
-				
+
 				// Save the image
 				File imageFile = savePhoto(bmp);
 				if (imageFile == null)
 					callbackContext.error("Error while saving image");
-				
+
 				// Update image gallery
 				scanPhoto(imageFile);
-				
+
 				callbackContext.success(imageFile.toString());
 			}
-			
+
 			return true;
 		} else {
 			return false;
@@ -68,7 +68,7 @@ public class Base64ImageSaverPlugin extends CordovaPlugin {
 
 	private File savePhoto(Bitmap bmp) {
 		File retVal = null;
-		
+
 		try {
 			Calendar c = Calendar.getInstance();
 			String date = "" + c.get(Calendar.DAY_OF_MONTH)
@@ -91,14 +91,14 @@ public class Base64ImageSaverPlugin extends CordovaPlugin {
 			if (check >= 1) {
 				folder = Environment
 					.getExternalStoragePublicDirectory(Environment.DIRECTORY_PICTURES);
-				
+
 				if(!folder.exists()) {
 					folder.mkdirs();
 				}
 			} else {
 				folder = Environment.getExternalStorageDirectory();
 			}
-			
+
 			File imageFile = new File(folder, "c2i_" + date.toString() + ".png");
 
 			FileOutputStream out = new FileOutputStream(imageFile);
@@ -108,19 +108,19 @@ public class Base64ImageSaverPlugin extends CordovaPlugin {
 
 			retVal = imageFile;
 		} catch (Exception e) {
-			Log.e("Base64ImageSaverPlugin", "An exception occured while saving image: "
+			Log.e("imageToGallerySaverPlugin", "An exception occured while saving image: "
 					+ e.toString());
 		}
 		return retVal;
 	}
-	
-	/* Invoke the system's media scanner to add your photo to the Media Provider's database, 
+
+	/* Invoke the system's media scanner to add your photo to the Media Provider's database,
 	 * making it available in the Android Gallery application and to other apps. */
 	private void scanPhoto(File imageFile)
 	{
 		Intent mediaScanIntent = new Intent(Intent.ACTION_MEDIA_SCANNER_SCAN_FILE);
 	    Uri contentUri = Uri.fromFile(imageFile);
-	    mediaScanIntent.setData(contentUri);	      		  
+	    mediaScanIntent.setData(contentUri);
 	    cordova.getActivity().sendBroadcast(mediaScanIntent);
-	} 
+	}
 }

@@ -9,22 +9,28 @@
 //
 
   module.exports = {
-    
+
     saveImageDataToLibrary:function(successCallback, failureCallback, base64Data) {
         // successCallback required
         if (typeof successCallback != "function") {
-            console.log("Base64ImageSaverPlugin Error: successCallback is not a function");
+            console.log("imageToGallerySaverPlugin Error: successCallback is not a function");
         }
         else if (typeof failureCallback != "function") {
-            console.log("Base64ImageSaverPlugin Error: failureCallback is not a function");
+            console.log("imageToGallerySaverPlugin Error: failureCallback is not a function");
         }
         else if (typeof base64Data != "string") {
-            console.log("Base64ImageSaverPlugin Error: base64Data is not a string");
+            console.log("imageToGallerySaverPlugin Error: base64Data is not a string");
         }
         else {
             var imageData = base64Data.replace(/data:image\/png;base64,/,'');
-            return cordova.exec(successCallback, failureCallback, "Base64ImageSaverPlugin","saveImageDataToLibrary",[imageData]);
+
+            return cordova.exec(
+              successCallback,
+              failureCallback,
+              "imageToGallerySaverPlugin",
+              "saveImageDataToLibrary",
+              [imageData]
+            );
         }
     }
   };
-  
