@@ -1,4 +1,4 @@
-package org.solderzzc.Base64ImageSaverPlugin;
+package nl.flexkids.imageToGallerySaver;
 
 import java.io.File;
 import java.io.FileOutputStream;
@@ -30,7 +30,7 @@ import android.util.Log;
  *
  * @author Vegard Løkken <vegard@headspin.no>
  */
-public class Base64ImageSaverPlugin extends CordovaPlugin {
+public class ImageToGallerySaverPlugin extends CordovaPlugin {
 	private static final String ACTION = "saveImageDataToLibrary";
 
 	// Permissions

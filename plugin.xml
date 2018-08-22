@@ -17,8 +17,8 @@
 
     <license>MIT</license>
 
-    <js-module src="www/imageToGallerySaver.js" name="imageToGallerySaverPlugin">
-        <clobbers target="cordova.plugins.imageToGallerySaver" />
+    <js-module src="www/imageToGallerySaver.js" name="ImageToGallerySavermageToGallerySaverPlugin">
+        <clobbers target="cordova.plugins.ImageToGallerySaver" />
     </js-module>
 
     <!-- ios -->
@@ -44,12 +44,12 @@
 
         <config-file target="res/xml/config.xml" parent="/*">
           <feature name="imageToGallerySaverPlugin" >
-            <param name="android-package" value="nl.flexkids.imageToGallerySaverPlugin"/>
+            <param name="android-package" value="nl.flexkids.imageToGallerySaver.ImageToGallerySaverPlugin"/>
           </feature>
         </config-file>
 
-        <source-file src="src/android/imageToGallerySaverPlugin.java"
-            target-dir="src/nl/flexkids/imageToGallerySaverPlugin" />
+        <source-file src="src/android/ImageToGallerySaverPlugin.java"
+            target-dir="src/nl/flexkids/imageToGallerySaver" />
 
     </platform>
 

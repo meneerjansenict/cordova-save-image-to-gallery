@@ -6,7 +6,7 @@
     "id": "nl.flexkids.imageToGallerySaverPlugin",
     "platforms": [
       "ios",
-      "android",
+      "android"
     ]
   },
   "repository": {
@@ -20,7 +20,7 @@
     "photo library",
     "ecosystem:cordova",
     "cordova-ios",
-    "cordova-android",
+    "cordova-android"
   ],
   "engines": [
     {
@@ -33,5 +33,5 @@
     "email": "info@flexkids.nl",
     "url": "https://www.flexkids.nl"
   },
-  "license": "MIT",
+  "license": "MIT"
 }
