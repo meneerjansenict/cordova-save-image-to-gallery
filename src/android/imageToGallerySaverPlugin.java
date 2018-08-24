@@ -22,10 +22,10 @@ import android.util.Base64;
 import android.util.Log;
 
 /**
- * Base64ImageSaverPlugin.java
- *
- * Android implementation of the Base64ImageSaverPlugin for iOS.
- * Inspirated by Joseph's "Save HTML5 Canvas Image to Gallery" plugin
+ * imageToGallerySaverPlugin.java
+ * Cordova plugin to store base64 encoded image data to Android Gallery.
+ * 
+ * Inspired by Joseph's "Save HTML5 Canvas Image to Gallery" plugin
  * http://jbkflex.wordpress.com/2013/06/19/save-html5-canvas-image-to-gallery-phonegap-android-plugin/
  *
  * @author Vegard Løkken <vegard@headspin.no>
@@ -117,7 +117,7 @@ public class ImageToGallerySaverPlugin extends CordovaPlugin {
 					+ c.get(Calendar.SECOND);
 
 			String deviceVersion = Build.VERSION.RELEASE;
-			Log.i("Base64ImageSaverPlugin", "Android version " + deviceVersion);
+			Log.i("imageToGallerySaver", "Android version " + deviceVersion);
 			int check = deviceVersion.compareTo("2.3.3");
 
 			File folder;
@@ -156,7 +156,7 @@ public class ImageToGallerySaverPlugin extends CordovaPlugin {
 	 * making it available in the Android Gallery application and to other apps. */
 	private void sendImageGalleryUpdateRequest(File imageFile)
 	{
-		Intent mediaScanIntent = new Intent(Intent.ACTION_MEDIA_SCANNER_SCAN_FILE);
+  	    Intent mediaScanIntent = new Intent(Intent.ACTION_MEDIA_SCANNER_SCAN_FILE);
 	    Uri contentUri = Uri.fromFile(imageFile);
 	    mediaScanIntent.setData(contentUri);
 	    cordova.getActivity().sendBroadcast(mediaScanIntent);

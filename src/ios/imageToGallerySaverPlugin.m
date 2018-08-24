@@ -1,8 +1,10 @@
 //
-//  Base64ImageSaverPlugin.m
-//  Base64ImageSaverPlugin PhoneGap/Cordova plugin
+//  imageToGallerySaverPlugin.m
+//  PhoneGap/Cordova plugin to save base64 image data to the iOS Photos app
 //
 //  Created by Tommy-Carlos Williams on 29/03/12.
+//  Modified by Flexkids on 24/08/2018.
+//
 //  Copyright (c) 2012 Tommy-Carlos Williams. All rights reserved.
 //	MIT Licensed
 //

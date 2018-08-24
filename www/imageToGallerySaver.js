@@ -1,9 +1,11 @@
 //
-//  Base64ImageSaverPlugin.js
-//  Base64ImageSaverPlugin PhoneGap/Cordova plugin
+//  imageToGallerySaver.js
+//  PhoneGap/Cordova plugin to save images in base64 encoding to the iOS gallery or Android gallery.
 //
 //  Created by Tommy-Carlos Williams on 29/03/12.
 //  Modified by Simba Zhang on 09/10/2015
+//  Modified by Flexkids on 24/08/2018
+//
 //  Copyright (c) 2012 Tommy-Carlos Williams. All rights reserved.
 //  MIT Licensed
 //
