@@ -1,26 +1,28 @@
-Base64ImageSaverPlugin
+cordova-base64-image-saver
 ============
 
 This plugin(based on devgeeks/Canvas2ImagePlugin) allows you to save BASE64 data to the iOS Photo Library, Android Gallery or WindowsPhone 8 Photo Album from your app.
 
+It will request the proper permissions before saving. 
+
 Usage:
 ------
 
-Call the `window.Base64ImageSaverPlugin.saveImageDataToLibrary()` method using success and error callbacks and the id attribute or the element object of the canvas to save:
+Call the `window.cordova.plugins.ImageToGallerySaver.saveImageDataToLibrary()` method using success and error callbacks and the id attribute or the element object of the canvas to save:
 
 ### Example
 
 ```javascript
 function onDeviceReady()
 {
-	window.Base64ImageSaverPlugin.saveImageDataToLibrary(
+	window.cordova.plugins.ImageToGallerySaver.saveImageDataToLibrary(
         function(msg){
             console.log(msg);
         },
         function(err){
             console.log(err);
         },
-        BASE64DATA
+        'BASE64DATA'
     );
 }
 ```
@@ -32,6 +34,8 @@ The MIT License
 Copyright (c) 2011 Tommy-Carlos Williams (http://github.com/devgeeks)
 
 Copyright (c) 2015 Simba Zhang (http://github.com/solderzzc)
+
+Copyright (c) 2018 Flexkids (https://flexkids.nl/)
 
 Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
 
