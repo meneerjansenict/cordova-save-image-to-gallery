@@ -1,6 +1,6 @@
 {
-  "name": "cordova-base64-image-saver",
-  "version": "0.6.0",
+  "name": "cordova-save-image-to-gallery",
+  "version": "1.0.0",
   "description": "This plugin allows you to accept base64 image data and store in iOS Photos or Android Gallery",
   "cordova": {
     "id": "nl.flexkids.imageToGallerySaverPlugin",
