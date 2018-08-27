@@ -3,7 +3,7 @@
     id="nl.flexkids.imageToGallerySaverPlugin"
     version="1.0.0">
 
-    <name>cordova-base64-imagesaver</name>
+    <name>cordova-save-image-to-gallery</name>
 
     <engines>
         <engine name="cordova" version=">=3.0.0" />
