@@ -17,7 +17,7 @@
 
     <license>MIT</license>
 
-    <js-module src="www/imageToGallerySaver.js" name="ImageToGallerySavermageToGallerySaverPlugin">
+    <js-module src="www/imageToGallerySaver.js" name="ImageToGallerySaverPlugin">
         <clobbers target="cordova.plugins.ImageToGallerySaver" />
     </js-module>
 
