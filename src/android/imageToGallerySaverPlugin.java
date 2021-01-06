@@ -118,6 +118,11 @@ public class ImageToGallerySaverPlugin extends CordovaPlugin {
 
 			String deviceVersion = Build.VERSION.RELEASE;
 			Log.i("imageToGallerySaver", "Android version " + deviceVersion);
+
+
+			String sdk = Build.VERSION.SDK_INT;
+            Log.i("imageToGallerySaver", "SDK_INT" + sdk);
+
 			int check = deviceVersion.compareTo("2.3.3");
 
 			File folder;
@@ -127,8 +132,7 @@ public class ImageToGallerySaverPlugin extends CordovaPlugin {
 			 * 2.2
 			 */
 			if (check >= 1) {
-				folder = Environment
-					.getExternalStoragePublicDirectory(Environment.DIRECTORY_PICTURES);
+				folder = Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_PICTURES);
 
 				if(!folder.exists()) {
 					folder.mkdirs();
