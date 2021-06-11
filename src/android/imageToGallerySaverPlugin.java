@@ -111,6 +111,8 @@ public class ImageToGallerySaverPlugin extends CordovaPlugin {
 	private Uri storePhotoOnStorage(Bitmap bmp) {
 		Uri uri = null;
 
+        Log.i("imageToGallerySaver", "SDK_INT" + Build.VERSION.SDK_INT);
+
 		try {
 			Calendar c = Calendar.getInstance();
 			String date = "" + c.get(Calendar.DAY_OF_MONTH)
@@ -134,7 +136,7 @@ public class ImageToGallerySaverPlugin extends CordovaPlugin {
                 Context context = this.cordova.getActivity().getApplicationContext();
                 uri = context.getContentResolver().insert(MediaStore.Images.Media.EXTERNAL_CONTENT_URI, values);
                 OutputStream out = context.getContentResolver().openOutputStream(uri);
-//                 bitmap.compress(Bitmap.CompressFormat.PNG, 100, outstream);
+                bitmap.compress(Bitmap.CompressFormat.JPG, 100, out);
                 out.flush();
                 out.close();
 //                 Toast.makeText(this, "Saved!", Toast.LENGTH_SHORT).show();
