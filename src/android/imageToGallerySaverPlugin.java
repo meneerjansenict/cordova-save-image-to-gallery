@@ -77,9 +77,9 @@ public class ImageToGallerySaverPlugin extends CordovaPlugin {
 	private boolean storePhotoInGallery(Bitmap image, CallbackContext callbackContext)
 	{
 		try {
-			File imageFile = storePhotoOnStorage(image);
-			sendImageGalleryUpdateRequest(imageFile);
-			callbackContext.success(imageFile.toString());
+			Uri imageUri = storePhotoOnStorage(image);
+			sendImageGalleryUpdateRequest(imageUri);
+			callbackContext.success(imageUri.toString());
 			return true;
 
 		} catch (NullPointerException e) {
@@ -104,8 +104,9 @@ public class ImageToGallerySaverPlugin extends CordovaPlugin {
 		}
 	}
 
-	private File storePhotoOnStorage(Bitmap bmp) {
-		File retVal = null;
+	private Uri storePhotoOnStorage(Bitmap bmp) {
+		Uri uri = null;
+		FileOutputStream out = null;
 
 		try {
 			Calendar c = Calendar.getInstance();
@@ -116,53 +117,69 @@ public class ImageToGallerySaverPlugin extends CordovaPlugin {
 					+ c.get(Calendar.MINUTE)
 					+ c.get(Calendar.SECOND);
 
-			String deviceVersion = Build.VERSION.RELEASE;
-			Log.i("imageToGallerySaver", "Android version " + deviceVersion);
 
 
-			String sdk = Build.VERSION.SDK_INT;
-            Log.i("imageToGallerySaver", "SDK_INT" + sdk);
+			//For devices running android >= Q
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q) {
+                String filename = "c2i_" + date + ".jpg";
+                ContentValues values = new ContentValues();
+                values.put(MediaStore.MediaColumns.DISPLAY_NAME, filename);
+                values.put(MediaStore.MediaColumns.MIME_TYPE, "image/jpg");
+                values.put(MediaStore.MediaColumns.RELATIVE_PATH, Environment.DIRECTORY_PICTURES);
+                // values.put(MediaStore.Images.Media.DATE_TAKEN, System.currentTimeMillis());
+                //Inserting the contentValues to contentResolver and getting the Uri
 
-			int check = deviceVersion.compareTo("2.3.3");
+                uri = getContentResolver().insert(MediaStore.Images.Media.EXTERNAL_CONTENT_URI, values);
+                out = getContentResolver().openOutputStream(uri);
+//                 bitmap.compress(Bitmap.CompressFormat.PNG, 100, outstream);
+                out.close();
+//                 Toast.makeText(this, "Saved!", Toast.LENGTH_SHORT).show();
 
-			File folder;
-			/*
-			 * File path = Environment.getExternalStoragePublicDirectory(
-			 * Environment.DIRECTORY_PICTURES ); //this throws error in Android
-			 * 2.2
-			 */
-			if (check >= 1) {
-				folder = Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_PICTURES);
+            } else { // 'Old code'
+                String filename = "c2i_" + date + ".png";
+                String deviceVersion = Build.VERSION.RELEASE;
+                Log.i("imageToGallerySaver", "Android version " + deviceVersion);
+                // String sdk = Build.VERSION.SDK_INT;
+                // Log.i("imageToGallerySaver", "SDK_INT" + sdk);
+                int check = deviceVersion.compareTo("2.3.3");
 
-				if(!folder.exists()) {
-					folder.mkdirs();
-				}
-			} else {
-				folder = Environment.getExternalStorageDirectory();
-			}
+                File folder;
+                /*
+                 * File path = Environment.getExternalStoragePublicDirectory(
+                 * Environment.DIRECTORY_PICTURES ); //this throws error in Android
+                 * 2.2
+                 */
+                if (check >= 1) {
+                    folder = Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_PICTURES);
 
-			File imageFile = new File(folder, "c2i_" + date + ".png");
+                    if(!folder.exists()) {
+                        folder.mkdirs();
+                    }
+                } else {
+                    folder = Environment.getExternalStorageDirectory();
+                }
 
-			FileOutputStream out = new FileOutputStream(imageFile);
-			bmp.compress(Bitmap.CompressFormat.PNG, 100, out);
-			out.flush();
-			out.close();
+                File imageFile = new File(folder, filename);
 
-			retVal = imageFile;
+                FileOutputStream out = new FileOutputStream(imageFile);
+                bmp.compress(Bitmap.CompressFormat.PNG, 100, out);
+                out.flush();
+                out.close();
+
+                uri = Uri.fromFile(imageFile);
+            }
 		} catch (Exception e) {
 			Log.e("imageToGallerySaver", "An exception occured while saving image: "
 					+ e.toString());
 		}
-		return retVal;
+		return uri;
 	}
 
 	/* Invoke the system's media scanner to add your photo to the Media Provider's database,
 	 * making it available in the Android Gallery application and to other apps. */
-	private void sendImageGalleryUpdateRequest(File imageFile)
-	{
+	private void sendImageGalleryUpdateRequest(Uri uri) {
   	    Intent mediaScanIntent = new Intent(Intent.ACTION_MEDIA_SCANNER_SCAN_FILE);
-	    Uri contentUri = Uri.fromFile(imageFile);
-	    mediaScanIntent.setData(contentUri);
+	    mediaScanIntent.setData(uri);
 	    cordova.getActivity().sendBroadcast(mediaScanIntent);
 	}
 }
