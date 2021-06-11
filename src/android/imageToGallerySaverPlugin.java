@@ -13,6 +13,7 @@ import org.json.JSONException;
 import android.Manifest;
 import android.content.Intent;
 import android.content.ContentValues;
+import android.content.Context;
 import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
@@ -130,9 +131,9 @@ public class ImageToGallerySaverPlugin extends CordovaPlugin {
                 values.put(MediaStore.MediaColumns.RELATIVE_PATH, Environment.DIRECTORY_PICTURES);
                 // values.put(MediaStore.Images.Media.DATE_TAKEN, System.currentTimeMillis());
                 //Inserting the contentValues to contentResolver and getting the Uri
-
-                uri = getContentResolver().insert(MediaStore.Images.Media.EXTERNAL_CONTENT_URI, values);
-                out = getContentResolver().openOutputStream(uri);
+                Context context = this.cordova.getActivity().getApplicationContext();
+                uri = context.getContentResolver().insert(MediaStore.Images.Media.EXTERNAL_CONTENT_URI, values);
+                out = context.getContentResolver().openOutputStream(uri);
 //                 bitmap.compress(Bitmap.CompressFormat.PNG, 100, outstream);
                 out.close();
 //                 Toast.makeText(this, "Saved!", Toast.LENGTH_SHORT).show();
@@ -163,7 +164,7 @@ public class ImageToGallerySaverPlugin extends CordovaPlugin {
 
                 File imageFile = new File(folder, filename);
 
-                FileOutputStream out = new FileOutputStream(imageFile);
+                out = new FileOutputStream(imageFile);
                 bmp.compress(Bitmap.CompressFormat.PNG, 100, out);
                 out.flush();
                 out.close();
