@@ -136,7 +136,7 @@ public class ImageToGallerySaverPlugin extends CordovaPlugin {
                 Context context = this.cordova.getActivity().getApplicationContext();
                 uri = context.getContentResolver().insert(MediaStore.Images.Media.EXTERNAL_CONTENT_URI, values);
                 OutputStream out = context.getContentResolver().openOutputStream(uri);
-                bitmap.compress(Bitmap.CompressFormat.JPG, 100, out);
+                bmp.compress(Bitmap.CompressFormat.JPEG, 100, out);
                 out.flush();
                 out.close();
 //                 Toast.makeText(this, "Saved!", Toast.LENGTH_SHORT).show();
