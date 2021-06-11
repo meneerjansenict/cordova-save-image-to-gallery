@@ -1,6 +1,7 @@
 package nl.flexkids.imageToGallerySaver;
 
 import java.io.File;
+import java.io.OutputStream;
 import java.io.FileOutputStream;
 import java.util.Calendar;
 
@@ -109,7 +110,6 @@ public class ImageToGallerySaverPlugin extends CordovaPlugin {
 
 	private Uri storePhotoOnStorage(Bitmap bmp) {
 		Uri uri = null;
-		FileOutputStream out = null;
 
 		try {
 			Calendar c = Calendar.getInstance();
@@ -133,8 +133,9 @@ public class ImageToGallerySaverPlugin extends CordovaPlugin {
                 //Inserting the contentValues to contentResolver and getting the Uri
                 Context context = this.cordova.getActivity().getApplicationContext();
                 uri = context.getContentResolver().insert(MediaStore.Images.Media.EXTERNAL_CONTENT_URI, values);
-                out = context.getContentResolver().openOutputStream(uri);
+                OutputStream out = context.getContentResolver().openOutputStream(uri);
 //                 bitmap.compress(Bitmap.CompressFormat.PNG, 100, outstream);
+                out.flush();
                 out.close();
 //                 Toast.makeText(this, "Saved!", Toast.LENGTH_SHORT).show();
 
@@ -164,7 +165,7 @@ public class ImageToGallerySaverPlugin extends CordovaPlugin {
 
                 File imageFile = new File(folder, filename);
 
-                out = new FileOutputStream(imageFile);
+                FileOutputStream out = new FileOutputStream(imageFile);
                 bmp.compress(Bitmap.CompressFormat.PNG, 100, out);
                 out.flush();
                 out.close();
